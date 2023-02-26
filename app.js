@@ -8,6 +8,14 @@ const createPath = require("./utils/createPath");
 const app = express();
 
 const PORT = 3000;
+const db = 'mongodb://localhost:8000';
+
+mongoose.set('strictQuery', false);
+mongoose
+    .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('Connected'))
+    .catch((error) => console.log(error));
+
 app.listen(PORT, (error) => {
     error ? console.log(error) : console.log(`listening ${PORT}`);
 });
